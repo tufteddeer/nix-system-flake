@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       #./hardware-configuration.nix
+      
+      ./adguard.nix
     ];
 
   # Bootloader.
@@ -87,6 +89,19 @@
 
   services.openssh = {
     enable = true;
+  };
+  
+  networking.firewall = {
+  enable = true;
+  allowedTCPPorts = [ 80 22 443 
+    # adguard home
+    3000
+  ];
+  allowedUDPPorts = [
+    # adguard dns
+    53
+  ];
+
 };
 
   # This value determines the NixOS release from which the default
