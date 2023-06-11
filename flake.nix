@@ -28,6 +28,7 @@
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
+          ./locale.nix
         
 
         home-manager.nixosModules.home-manager
