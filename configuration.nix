@@ -62,12 +62,7 @@
     isNormalUser = true;
     description = "f";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      helix
-      zellij
-    #  thunderbird
-    ];
+    packages = with pkgs; [ ];
   };
 
   # Enable automatic login for the user.
