@@ -28,7 +28,19 @@
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
+        
+
+        home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.f = import ./home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
         ];
+
       };
       
     };
