@@ -29,7 +29,7 @@
           ./hardware-configuration.nix
           ./configuration.nix
           ./locale.nix
-        
+          ./freshrss.nix
 
         home-manager.nixosModules.home-manager
           {
