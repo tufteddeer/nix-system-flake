@@ -33,6 +33,7 @@ let
     fd
     gping
     gh
+    htop
   ];
 
   nix-utils = with pkgs; [
