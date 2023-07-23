@@ -25,11 +25,13 @@
       normandy = lib.nixosSystem {
         inherit system;
 
+
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
           ./locale.nix
           ./freshrss.nix
+
 
         home-manager.nixosModules.home-manager
           {
@@ -40,6 +42,7 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
+
         ];
 
       };

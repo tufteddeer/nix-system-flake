@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       #./hardware-configuration.nix
-      
+      #./freshrss.nix
       ./adguard.nix
     ];
 
@@ -65,6 +65,11 @@
     packages = with pkgs; [ ];
   };
 
+  users.users.borg = {
+    isNormalUser= true;
+    extraGroups = ["freshrss" "f"];
+  };
+
   # Enable automatic login for the user.
   #services.xserver.displayManager.autoLogin.enable = true;
   #services.xserver.displayManager.autoLogin.user = "f";
@@ -96,13 +101,32 @@
   allowedTCPPorts = [ 80 22 443 
     # adguard home
     3000
+    # audiobookshelf
+    8000
+    8001
   ];
   allowedUDPPorts = [
     # adguard dns
     53
   ];
+  };
 
-};
+
+  # services.audiobookshelf = {
+  #   enable = true;
+  #   port = 8001;
+  # };
+
+  # services.borgbackup.jobs.notebook = {
+  #   paths = "/home/f/dotfiles";
+  #   encryption.mode = "none";
+  #   repo = "/home/f/borgtest";
+  #   compression = "zstd,1";
+  #   startAt = "minutely";
+  #   user = "f";
+  # };
+
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
