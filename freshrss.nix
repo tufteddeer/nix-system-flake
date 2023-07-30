@@ -10,13 +10,13 @@ in {
     dataDir = "${dataDir}";
   };
 
-  services.borgbackup.jobs.freshrss = {
-    paths = "${dataDir}";
-    encryption.mode = "none";
-    repo = "/home/f/borgtest";
-    compression = "zstd,1";
-    startAt = "daily";
-    user = "borg";
-  };
+  # services.borgbackup.jobs.freshrss = {
+  #   paths = "${dataDir}";
+  #   encryption.mode = "none";
+  #   repo = "/home/borg/borgtest";
+  #   compression = "zstd,1";
+  #   startAt = "minutely";
+  #   user = "borg";
+  # };
 
 }
