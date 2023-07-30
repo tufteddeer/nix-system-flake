@@ -32,6 +32,7 @@
           ./locale.nix
           ./freshrss.nix
 
+          ./paperless.nix
 
         home-manager.nixosModules.home-manager
           {

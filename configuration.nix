@@ -108,6 +108,12 @@
     # audiobookshelf
     8000
     8001
+
+    # paperless
+    58080
+
+    # audiothekfeed
+    3123
   ];
   allowedUDPPorts = [
     # adguard dns
