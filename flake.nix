@@ -10,44 +10,49 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
-  let
-    system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
-
-    lib = nixpkgs.lib;
-
-  in {
-    nixosConfigurations = {
-      normandy = lib.nixosSystem {
+      pkgs = import nixpkgs {
         inherit system;
+        config = { allowUnfree = true; };
+      };
+
+      lib = nixpkgs.lib;
+
+    in
+    {
+      nixosConfigurations = {
+        normandy = lib.nixosSystem {
+          inherit system;
 
 
-        modules = [
-          ./hardware-configuration.nix
-          ./configuration.nix
-          ./locale.nix
-          ./freshrss.nix
+          modules = [
+            ./machines/normandy/hardware-configuration.nix
+            ./machines/normandy/configuration.nix
 
-          ./paperless.nix
+            ./locale.nix
 
-        home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.f = import ./home.nix;
+            ./services/freshrss.nix
+            ./services/paperless.nix
+            ./services/adguard.nix
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
+            { networking.hostName = "normandy"; }
 
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.f = import ./home.nix;
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            }
+
+          ];
+
+        };
 
       };
-      
     };
-  };
 }
