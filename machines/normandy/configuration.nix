@@ -24,23 +24,10 @@
   services.logind.lidSwitchExternalPower = "ignore";
   services.logind.lidSwitchDocked = "ignore";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.fish.enable = true;
-  users.users.f = {
-    isNormalUser = true;
-    description = "f";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [ ];
-  };
-
   users.users.borg = {
     isNormalUser = true;
     extraGroups = [ "freshrss" "f" ];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
 
@@ -75,9 +62,5 @@
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?
-
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
 
 }

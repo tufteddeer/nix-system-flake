@@ -11,26 +11,23 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
-
       lib = nixpkgs.lib;
-
     in
     {
       nixosConfigurations = {
-        normandy = lib.nixosSystem {
-          inherit system;
+        normandy = lib.nixosSystem rec {
 
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
+          };
 
           modules = [
             ./machines/normandy/hardware-configuration.nix
             ./machines/normandy/configuration.nix
 
+            ./nix-options.nix
+            ./user.nix
             ./locale.nix
 
             ./services/freshrss.nix
@@ -44,9 +41,37 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.f = import ./home.nix;
+            }
 
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
+          ];
+
+        };
+
+        stardust = lib.nixosSystem {
+          pkgs = import nixpkgs {
+            system = "aarch64-linux";
+            config = { allowUnfree = true; };
+          };
+
+          modules = [
+            ./machines/stardust/hardware-configuration.nix
+            ./machines/stardust/configuration.nix
+
+            ./nix-options.nix
+            ./user.nix
+            ./locale.nix
+
+            ./services/freshrss.nix
+            ./services/paperless.nix
+            ./services/adguard.nix
+
+            { networking.hostName = "stardust"; }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.f = import ./home.nix;
             }
 
           ];
