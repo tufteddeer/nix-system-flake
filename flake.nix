@@ -78,6 +78,43 @@
 
         };
 
+        roach = lib.nixosSystem rec {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
+          };
+
+          modules = [
+            ./machines/roach/hardware-configuration.nix
+            ./machines/roach/configuration.nix
+
+            ./nix-options.nix
+            ./user.nix
+            ./locale.nix
+            ./scanning-printing.nix
+            ./desktop.nix
+
+            {
+              networking.hostName = "roach";
+            }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.f = import ./home.nix;
+            }
+
+            {
+              environment.systemPackages = with pkgs; [
+                logseq
+              ];
+            }
+
+          ];
+
+        };
+
       };
     };
 }

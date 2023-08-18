@@ -1,17 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  gui-essentials = with pkgs; [
-    alacritty
-    spotify
-    thunderbird
-    vlc
-    libreoffice-fresh
-    discord
-    ark
-    keepassxc
-    nextcloud-client
-  ];
 
   gui-extras = with pkgs; [
     picard
