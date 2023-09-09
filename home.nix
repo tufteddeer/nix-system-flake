@@ -2,27 +2,15 @@
 
 let
 
-  gui-extras = with pkgs; [
-    picard
-    k3b
-    libreoffice-fresh
-  ];
-
-  video-editing = with pkgs; [
-    obs-studio
-    kdenlive
-    mediainfo
-  ];
-
   terminal-apps = with pkgs; [
     duf
     bat
-    exa
     tealdeer
     fd
     gping
     gh
     htop
+    mediainfo
   ];
 
   nix-utils = with pkgs; [
@@ -63,7 +51,6 @@ in
     shellAliases = {
       gs = "git status";
       cat = "bat";
-      ls = "exa";
       g = "git status --short";
     };
   };
@@ -131,6 +118,13 @@ in
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+    icons = true;
+    git = true;
   };
 
   programs.zellij = {
