@@ -108,6 +108,7 @@ in
     userEmail = "36223345+tufteddeer@users.noreply.github.com";
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
     difftastic = {
       enable = true;
