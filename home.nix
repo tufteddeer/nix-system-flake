@@ -120,12 +120,12 @@ in
     enableFishIntegration = true;
   };
 
-  programs.eza = {
-    enable = true;
-    enableAliases = true;
-    icons = true;
-    git = true;
-  };
+  # programs.eza = {
+  #   enable = true;
+  #   enableAliases = true;
+  #   icons = true;
+  #   git = true;
+  # };
 
   programs.zellij = {
     enable = true;
