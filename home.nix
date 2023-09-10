@@ -18,6 +18,7 @@ let
     unzip
     usbutils
     pciutils
+    wget
   ];
 
   nix-utils = with pkgs; [
