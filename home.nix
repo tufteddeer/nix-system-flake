@@ -13,6 +13,11 @@ let
     mediainfo
     ripgrep
     nerdfonts
+
+    zip
+    unzip
+    usbutils
+    pciutils
   ];
 
   nix-utils = with pkgs; [
