@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  services.xserver.enable = true;
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
     layout = "de";
@@ -32,13 +27,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    elisa
-    oxygen
-    plasma-browser-integration
-  ];
-
 
   environment.systemPackages = with pkgs; [
     alacritty

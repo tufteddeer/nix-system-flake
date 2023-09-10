@@ -98,7 +98,9 @@
             ./user.nix
             ./locale.nix
             ./scanning-printing.nix
-            ./desktop.nix
+            ./nas.nix
+            ./desktop-common.nix
+            ./plasma.nix
 
             {
               networking.hostName = "roach";
@@ -120,6 +122,47 @@
                 makemkv
 
                 gnome.gnome-boxes
+              ];
+            }
+
+          ];
+
+        };
+        
+        aetron = lib.nixosSystem rec {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
+          };
+
+          modules = [
+            ./machines/aetron/hardware-configuration.nix
+            ./machines/aetron/configuration.nix
+
+            ./nix-options.nix
+            ./user.nix
+            ./locale.nix
+            ./scanning-printing.nix
+            ./nas.nix
+
+            ./desktop-common.nix
+            ./gnome.nix
+
+            {
+              networking.hostName = "aetron";
+            }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.f = import ./home.nix;
+            }
+
+            {
+              environment.systemPackages = with pkgs; [
+                logseq
+                
               ];
             }
 
