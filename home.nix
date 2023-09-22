@@ -79,6 +79,17 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+
+    userSettings = {
+      "files.autoSave" = "afterDelay";
+      "editor.formatOnSave" = true;
+      "rust-analyzer.check.command" = "clippy";
+      "editor.minimap.autohide" = true;
+      "redhat.telemetry.enabled" = false;
+      # use a Nerd Font here to fix missing symbols
+      "terminal.integrated.fontFamily" = "FiraCode Nerd Font Mono";
+    };
+
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       matklad.rust-analyzer
@@ -145,7 +156,10 @@ in
     (
       #gui-essentials ++
       terminal-apps ++
-      nix-utils
+      nix-utils ++
+      [
+        fira-code
+      ]
     );
 
 }
