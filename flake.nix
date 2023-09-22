@@ -162,7 +162,8 @@
             {
               environment.systemPackages = with pkgs; [
                 logseq
-                
+                handbrake
+                makemkv
               ];
             }
 
