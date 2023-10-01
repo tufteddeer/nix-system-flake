@@ -166,6 +166,8 @@
                 logseq
                 handbrake
                 makemkv
+                arduino
+                bitwarden
               ];
             }
 
