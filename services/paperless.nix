@@ -19,7 +19,7 @@ rec {
     options =
       let
         # this line prevents hanging on network split
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+        automount_opts = "noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
       in
       [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=${toString config.users.users.paperless.uid}" ]; #",gid=${toString config.users.users.paperless.gid}"];
@@ -31,13 +31,14 @@ rec {
     repo = backup_repo;
     compression = "zstd,1";
     startAt = "daily";
-    user = "paperless";
-    group = "paperless";
 
     exclude = [
       "${services.paperless.dataDir}/superuser-password"
       "${services.paperless.dataDir}/superuser-state"
     ];
+
+    preHook = "/run/wrappers/bin/mount ${backup_repo}";
+    postHook = "/run/wrappers/bin/umount ${backup_repo}";
   };
 }
 
