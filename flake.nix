@@ -32,7 +32,7 @@
 
             ./services/freshrss.nix
             ./services/paperless.nix
-            #./services/adguard.nix
+            ./services/adguard.nix
 
             ./services/audiothek-feed.nix
 
