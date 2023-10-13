@@ -12,6 +12,13 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       lib = nixpkgs.lib;
+      
+      hm-module = home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.f = import ./home.nix;
+            };
     in
     {
       nixosConfigurations = {
@@ -38,12 +45,7 @@
 
             { networking.hostName = "normandy"; }
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.f = import ./home.nix;
-            }
+            hm-module
 
           ];
 
@@ -75,12 +77,7 @@
               ];
             }
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.f = import ./home.nix;
-            }
+            hm-module
 
           ];
 
@@ -108,12 +105,7 @@
               networking.hostName = "roach";
             }
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.f = import ./home.nix;
-            }
+            hm-module
 
             {
               environment.systemPackages = with pkgs; [
