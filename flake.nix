@@ -15,7 +15,7 @@
     in
     {
       nixosConfigurations = {
-        normandy = lib.nixosSystem rec {
+        normandy = lib.nixosSystem {
 
           pkgs = import nixpkgs {
             system = "x86_64-linux";
@@ -168,6 +168,11 @@
                 makemkv
                 arduino
                 bitwarden
+                drawio
+                mediathekview
+                ffmpeg
+                chromium
+                lapce
               ];
             }
 
