@@ -78,7 +78,7 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
 
     userSettings = {
       "files.autoSave" = "afterDelay";
@@ -98,6 +98,7 @@ in
       serayuzgur.crates
       asciidoctor.asciidoctor-vscode
       mkhl.direnv
+      golang.go
     ];
   };
 
