@@ -19,6 +19,10 @@
               home-manager.useUserPackages = true;
               home-manager.users.f = import ./home.nix;
             };
+      authorized_keys = [
+                "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVALmkXOYH56nfxUU9dWwpH3CoLfuTl6rKwTeQRry3KQvfk1EHdIm4jYJfxsb9OAX/xc3lKgOmm1Efjlwr5Tka2UjtL5AU+ZMdNYxNMIKcNaGxI8ot0L6LDeHp4fKwgz69B5K4hIdBgMbsURL0y+5WnGaicmuvuPR4SORPpm8HM6IzHg8Gfb/6DVHoagfz+BWhyGeC6JiISDthwKB2hNC0lK1zQuli/AyLLipW0awxMmeDLzxmyptmFAmke9s9QRPgBeixzeSIIWEhHpaBXudAjCIif7cUz4H0VEyJBf2/85ozSmukRir3bEClORKWlUfAPfZr9UDnBZElyZS0fqnoa+JCZo3QhHDH9/qT6VTurHF/8+mXTAL9tXL/zqk5op5agZA5MK6b8PpG8gRxunUYwWQaUf23bxZHK9MJftf6MjWPYTupUkn6g44NS/S1TT8915xKDpJSeFxlQw29NFzP69+SpD5KGMmFBgiWNbsfBr1ZCIH0sUwlNJAl0dPSndIAsZe91WAColm0Y8VzemdcsmYtUm5FUYzmAM0IiDOC+IgaIBhm2n02XV1jdUmUJxi1OTibuqm4aWVxveNhfgV5qjk5+BFZtdNhX3aI7ImW+w0hsM/SDcN0dNvsQCXqokrJZgM0ca0m9sFunCrpZ2BEjqyVNgap9QYvYYx+ZuNnzQ=="
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE0X5Eoc7OBLqR/VuMTuichL+GhUYV0tAZBVlPiXMTVD f@aetron"
+              ];
     in
     {
       nixosConfigurations = {
@@ -43,7 +47,10 @@
 
             ./services/audiothek-feed.nix
 
-            { networking.hostName = "normandy"; }
+            {
+              networking.hostName = "normandy";
+              users.users.f.openssh.authorizedKeys.keys = authorized_keys;
+            }
 
             hm-module
 
@@ -71,10 +78,7 @@
 
             {
               networking.hostName = "stardust";
-
-              users.users.f.openssh.authorizedKeys.keys = [
-                "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVALmkXOYH56nfxUU9dWwpH3CoLfuTl6rKwTeQRry3KQvfk1EHdIm4jYJfxsb9OAX/xc3lKgOmm1Efjlwr5Tka2UjtL5AU+ZMdNYxNMIKcNaGxI8ot0L6LDeHp4fKwgz69B5K4hIdBgMbsURL0y+5WnGaicmuvuPR4SORPpm8HM6IzHg8Gfb/6DVHoagfz+BWhyGeC6JiISDthwKB2hNC0lK1zQuli/AyLLipW0awxMmeDLzxmyptmFAmke9s9QRPgBeixzeSIIWEhHpaBXudAjCIif7cUz4H0VEyJBf2/85ozSmukRir3bEClORKWlUfAPfZr9UDnBZElyZS0fqnoa+JCZo3QhHDH9/qT6VTurHF/8+mXTAL9tXL/zqk5op5agZA5MK6b8PpG8gRxunUYwWQaUf23bxZHK9MJftf6MjWPYTupUkn6g44NS/S1TT8915xKDpJSeFxlQw29NFzP69+SpD5KGMmFBgiWNbsfBr1ZCIH0sUwlNJAl0dPSndIAsZe91WAColm0Y8VzemdcsmYtUm5FUYzmAM0IiDOC+IgaIBhm2n02XV1jdUmUJxi1OTibuqm4aWVxveNhfgV5qjk5+BFZtdNhX3aI7ImW+w0hsM/SDcN0dNvsQCXqokrJZgM0ca0m9sFunCrpZ2BEjqyVNgap9QYvYYx+ZuNnzQ=="
-              ];
+              users.users.f.openssh.authorizedKeys.keys = authorized_keys;
             }
 
             hm-module
@@ -146,12 +150,7 @@
               networking.hostName = "aetron";
             }
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.f = import ./home.nix;
-            }
+            hm-module
 
             {
               environment.systemPackages = with pkgs; [
