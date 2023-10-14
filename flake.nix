@@ -158,6 +158,13 @@
             {
               networking.hostName = "aetron";
             }
+            
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.f = import ./home.nix;
+            }
 
             {
               environment.systemPackages = with pkgs; [
