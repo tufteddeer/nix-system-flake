@@ -154,6 +154,7 @@
 
             ./desktop-common.nix
             ./gnome.nix
+            ./docker.nix
 
             {
               networking.hostName = "aetron";
