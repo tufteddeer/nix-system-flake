@@ -5,7 +5,7 @@
   users.users.f = {
     isNormalUser = true;
     description = "f";
-    extraGroups = [ "networkmanager" "wheel" "cdrom" ];
+    extraGroups = [ "wireshark" "networkmanager" "wheel" "cdrom" "dialout" ];
     shell = pkgs.fish;
     packages = with pkgs; [ ];
   };

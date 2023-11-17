@@ -159,7 +159,7 @@
             {
               networking.hostName = "aetron";
             }
-            
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -167,6 +167,12 @@
               home-manager.users.f = import ./home.nix;
             }
 
+            {
+              services.udev.packages = [
+                pkgs.platformio
+                pkgs.openocd
+              ];
+            }
             {
               environment.systemPackages = with pkgs; [
                 logseq
@@ -179,13 +185,20 @@
                 ffmpeg
                 chromium
                 lapce
+                zotero
+                jetbrains.goland
+                bruno
+                krita
+                unityhub
+                jetbrains.rider
+                wireshark
+                platformio
               ];
             }
-
           ];
 
         };
 
       };
     };
-} 
+}
