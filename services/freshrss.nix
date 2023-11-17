@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 let
   dataDir = "/var/lib/freshrss";
-in {
+in
+{
   services.freshrss = {
     enable = true;
     baseUrl = "http://192.168.178.20";
