@@ -193,6 +193,9 @@
                 jetbrains.rider
                 wireshark
                 platformio
+
+                lsof
+                killall
               ];
             }
           ];
