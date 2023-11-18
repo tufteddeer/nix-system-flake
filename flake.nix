@@ -196,6 +196,7 @@
 
                 lsof
                 killall
+                pv
               ];
             }
           ];
