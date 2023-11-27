@@ -5,18 +5,10 @@
     [
     ];
 
-  boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+ boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # environment.systemPackages = with pkgs; [
-  #   
-  # ];
+  boot.initrd.luks.devices."luks-0f167b21-2667-4f54-9aa8-dd5c9e8dff7d".device = "/dev/disk/by-uuid/0f167b21-2667-4f54-9aa8-dd5c9e8dff7d";
 
   users.users.borg = {
     isNormalUser = true;
