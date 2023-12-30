@@ -5,3 +5,7 @@
 - paperless: superuser password in `/run/secrets/paperless`
 - freshrss: default user password in `/run/secrets/freshrss` (needed for setup, but seems to have no effect when restoring a backup)
 - NAS share: `/etc/nixos/smb-secrets`
+
+== Persitence
+
+Docker volumes are located in /volumes
