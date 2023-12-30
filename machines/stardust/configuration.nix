@@ -21,25 +21,9 @@
 
   networking.firewall = {
     enable = true;
+
     allowedTCPPorts = [
-      80
       22
-      443
-      # adguard home
-      3000
-      # audiobookshelf
-      8000
-      8001
-
-      # paperless
-      58080
-
-      # audiothekfeed
-      3123
-    ];
-    allowedUDPPorts = [
-      # adguard dns
-      53
     ];
   };
 
