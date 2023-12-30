@@ -5,7 +5,14 @@
 - paperless: superuser password in `/run/secrets/paperless`
 - freshrss: default user password in `/run/secrets/freshrss` (needed for setup, but seems to have no effect when restoring a backup)
 - NAS share: `/etc/nixos/smb-secrets`
+- nix-ops age key: /var/lib/sops-nix/age/key.txt
 
-== Persitence
+=== borg
+
+- the borg repo is stored using nix-ops
+- the keyfile must be placed in /root/.config/borg/keys/
+- the passphrase is in /borg-repo-passphrase
+
+== Persistence
 
 Docker volumes are located in /volumes

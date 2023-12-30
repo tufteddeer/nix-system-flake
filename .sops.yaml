@@ -1,0 +1,7 @@
+keys:
+  - &admin_stardust age13axk9qlrcvwd5z9alqmnka55tvfedvzacsqagff57vy8pafmrpnquqs30s
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin_stardust

@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, sops-nix, ... }:
     let
       lib = nixpkgs.lib;
 
@@ -64,6 +65,13 @@
           };
 
           modules = [
+            sops-nix.nixosModules.sops
+            {
+              sops.defaultSopsFile = ./secrets/secrets.yaml;
+              sops.age.keyFile = "/var/lib/sops-nix/age/key.txt";
+              sops.secrets.borg_repo = {};            
+            }
+            
             ./machines/stardust/hardware-configuration.nix
             ./machines/stardust/configuration.nix
 
@@ -71,11 +79,13 @@
             ./user.nix
             ./locale.nix
 
-            ./services/freshrss.nix
+            # ./services/freshrss.nix
             ./services/paperless.nix
             ./services/adguard.nix
             ./services/audiothek-feed.nix
+            # ./services/reverse-proxy.nix
 
+            ./borgbackup.nix
             {
               networking.hostName = "stardust";
               users.users.f.openssh.authorizedKeys.keys = authorized_keys;
@@ -87,7 +97,6 @@
               home-manager.useUserPackages = true;
               home-manager.users.f = import ./home.nix;
             }
-
           ];
 
         };
