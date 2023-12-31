@@ -19,6 +19,8 @@ let
     usbutils
     pciutils
     wget
+
+    doggo # DNS client
   ];
 
   nix-utils = with pkgs; [
