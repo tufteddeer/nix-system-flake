@@ -16,3 +16,5 @@
 == Persistence
 
 Docker volumes are located in /volumes
+
+Navidrome data has to be owned by navidrome:navidrome, which exists on the host and inside the containers.

@@ -5,6 +5,10 @@
       "${config.services.paperless.dataDir}"
       "/volumes"    
     ];
+    exclude = [
+      "/volumes/navidrome_music_data/cache"
+      "/volumes/navidrome_audiobooks_data/cache"
+    ];
     encryption.mode = "keyfile-blake2";
     encryption.passCommand = "cat /borg-repo-passphrase";
     compression = "zstd,1";

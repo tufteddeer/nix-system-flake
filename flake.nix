@@ -69,7 +69,8 @@
             {
               sops.defaultSopsFile = ./secrets/secrets.yaml;
               sops.age.keyFile = "/var/lib/sops-nix/age/key.txt";
-              sops.secrets.borg_repo = {};            
+              sops.secrets.borg_repo = {};  
+              sops.secrets.nas-media-credentials = {};          
             }
             
             ./machines/stardust/hardware-configuration.nix
@@ -85,6 +86,7 @@
             ./services/audiothek-feed.nix
             # ./services/reverse-proxy.nix
 
+            ./services/navidrome.nix
             ./borgbackup.nix
             {
               networking.hostName = "stardust";
