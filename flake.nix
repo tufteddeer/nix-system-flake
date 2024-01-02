@@ -84,7 +84,7 @@
             ./services/paperless.nix
             ./services/adguard.nix
             ./services/audiothek-feed.nix
-            # ./services/reverse-proxy.nix
+            ./services/reverse-proxy.nix
 
             ./services/navidrome.nix
             ./borgbackup.nix

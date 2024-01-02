@@ -6,5 +6,4 @@
     ports = [ "3001:3000" ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 3001 ];
 }
