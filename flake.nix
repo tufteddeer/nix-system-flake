@@ -91,6 +91,7 @@
 
             ./services/navidrome.nix
             ./services/monitoring.nix
+            ./services/forgejo.nix
             ./borgbackup.nix
             {
               networking.hostName = "stardust";
