@@ -71,6 +71,9 @@
               sops.age.keyFile = "/var/lib/sops-nix/age/key.txt";
               sops.secrets.borg_repo = {};  
               sops.secrets.nas-media-credentials = {};          
+              sops.secrets.kuma-admin = {
+                owner = "prometheus";
+              };         
             }
             
             ./machines/stardust/hardware-configuration.nix
@@ -87,6 +90,7 @@
             ./services/reverse-proxy.nix
 
             ./services/navidrome.nix
+            ./services/monitoring.nix
             ./borgbackup.nix
             {
               networking.hostName = "stardust";

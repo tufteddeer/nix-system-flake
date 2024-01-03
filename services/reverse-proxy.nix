@@ -31,6 +31,14 @@ in
         reverse_proxy http://localhost:4534
       '';
 
+      "http://grafana.${host}".extraConfig = ''
+        reverse_proxy http://localhost:6000
+      '';
+
+      "http://status.${host}".extraConfig = ''
+        reverse_proxy http://localhost:4000
+      '';
+
     };
   };
 
