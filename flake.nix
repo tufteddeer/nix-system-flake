@@ -93,7 +93,9 @@
             ./services/monitoring.nix
             ./services/forgejo.nix
             ./borgbackup.nix
-            {
+
+            ./services/jellyfin.nix
+             {
               networking.hostName = "stardust";
               users.users.f.openssh.authorizedKeys.keys = authorized_keys;
             }

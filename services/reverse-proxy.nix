@@ -39,6 +39,10 @@ in
         reverse_proxy http://localhost:4000
       '';
 
+      "http://jellyfin.${host}".extraConfig = ''
+        reverse_proxy http://localhost:8096
+      '';
+
     };
   };
 
