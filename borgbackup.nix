@@ -18,6 +18,16 @@
     preHook = ''
       BORG_REPO="$(cat ${config.sops.secrets.borg_repo.path})"
     '';
+
+    postHook = ''
+      if [ $exitStatus == 0 ]; then
+        STATUS=up
+      else
+        STATUS=down
+      fi
+      ${pkgs.curl}/bin/curl "http://krempel.xyz:4000/api/push/oC75GrcKfr?status=$STATUS&msg=$exitStatus"
+
+    '';
     repo = "placeholder";
   };
 }

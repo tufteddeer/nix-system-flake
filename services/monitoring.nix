@@ -23,7 +23,7 @@
         job_name = "uptime-kuma";
         static_configs = [
           {
-            targets = [ "localhost:4000" ];
+            targets = [ "localhost:${toString config.services.uptime-kuma.settings.PORT}" ];
           }
         ];
         metrics_path = "/metrics";
@@ -63,5 +63,4 @@
       PORT = "4000";
     };
   };
-  networking.firewall.allowedTCPPorts = [ 4000 ];
 }
