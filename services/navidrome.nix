@@ -45,7 +45,7 @@ in
       "${musicDir}:/music:ro"
       "/volumes/navidrome_music_data:/data"
     ];
-    image = "deluan/navidrome:0.50.2";
+    image = "deluan/navidrome:0.53.3";
     autoStart = true;
   };
 
@@ -58,7 +58,7 @@ in
       "${audiobooksDir}:/music:ro"
       "/volumes/navidrome_audiobooks_data:/data"
     ];
-    image = "deluan/navidrome:0.50.2";
+    image = "deluan/navidrome:0.53.3";
     autoStart = true;
   };
 }
