@@ -17,6 +17,12 @@
     # use sops-nix to avoid leaking ssh usernames and hosts
     preHook = ''
       BORG_REPO="$(cat ${config.sops.secrets.borg_repo.path})"
+
+      systemctl stop paperless-consumer.service
+      systemctl stop paperless-scheduler.service
+      systemctl stop paperless-task-queue.service
+      systemctl stop paperless-web.service
+      systemctl stop redis-paperless.service
     '';
 
     postHook = ''
@@ -25,7 +31,15 @@
       else
         STATUS=down
       fi
+      
+      systemctl start paperless-consumer.service
+      systemctl start paperless-scheduler.service
+      systemctl start paperless-task-queue.service
+      systemctl start paperless-web.service
+      systemctl start redis-paperless.service
+
       ${pkgs.curl}/bin/curl "http://krempel.xyz:4000/api/push/oC75GrcKfr?status=$STATUS&msg=$exitStatus"
+
 
     '';
     repo = "placeholder";
