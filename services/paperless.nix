@@ -7,7 +7,7 @@ rec {
     enable = true;
     address = "0.0.0.0";
     port = 58080;
-    extraConfig.PAPERLESS_OCR_LANGUAGE = "deu+eng";
+    settings.PAPERLESS_OCR_LANGUAGE = "deu+eng";
     #passwordFile = "/run/secrets/paperless";
     dataDir = "/var/lib/paperless";
   };
