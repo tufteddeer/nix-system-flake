@@ -2,7 +2,7 @@
 {
 
   virtualisation.oci-containers.containers.adguardhome = {
-    image = "adguard/adguardhome:v0.107.41";
+    image = "adguard/adguardhome:v0.107.53";
     autoStart = true;
     ports = [
       "53:53/udp"
