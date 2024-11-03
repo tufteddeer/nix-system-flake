@@ -95,6 +95,8 @@
             ./borgbackup.nix
 
             ./services/jellyfin.nix
+            ./services/audiobookshelf.nix
+            
              {
               networking.hostName = "stardust";
               users.users.f.openssh.authorizedKeys.keys = authorized_keys;

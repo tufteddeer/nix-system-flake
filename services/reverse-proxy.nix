@@ -43,6 +43,10 @@ in
         reverse_proxy http://localhost:8096
       '';
 
+      "http://audiobookshelf.${host}".extraConfig = ''
+        reverse_proxy http://localhost:8000
+      '';
+
     };
   };
 
