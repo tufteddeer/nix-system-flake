@@ -29,7 +29,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    alacritty
+    ghostty
     spotify
     thunderbird
     vlc
@@ -42,6 +42,7 @@
     libsForQt5.filelight
     okular
     kate
+    bitwarden-desktop
   ];
 
 }
