@@ -43,6 +43,7 @@
     okular
     kate
     bitwarden-desktop
+    zed
   ];
 
 }
