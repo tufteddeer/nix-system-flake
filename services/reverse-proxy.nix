@@ -47,6 +47,18 @@ in
         reverse_proxy http://localhost:8000
       '';
 
+       "http://ghostfolio.${host}".extraConfig = ''
+        reverse_proxy http://localhost:3333
+      '';
+
+       "http://tandoor.${host}".extraConfig = ''
+        reverse_proxy http://localhost:8200
+      '';
+
+      "http://calibre.${host}".extraConfig = ''
+        reverse_proxy http://localhost:8083
+      '';
+
     };
   };
 

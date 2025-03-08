@@ -96,6 +96,7 @@
 
             ./services/jellyfin.nix
             ./services/audiobookshelf.nix
+            ./services/calibre.nix
             
              {
               networking.hostName = "stardust";
