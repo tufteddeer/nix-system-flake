@@ -13,6 +13,8 @@
 - the keyfile must be placed in /root/.config/borg/keys/
 - the passphrase is in /borg-repo-passphrase
 
+- ssh access is granted via the root users public key
+
 == Persistence
 
 Docker volumes are located in /volumes
