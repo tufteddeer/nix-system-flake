@@ -3,7 +3,8 @@
   services.borgbackup.jobs.stardust-backup = {
     paths = [
       "${config.services.paperless.dataDir}"
-      "/volumes"    
+      "/volumes"
+      "/home/f/.local/share/containers/storage/volumes/"
     ];
     exclude = [
       "/volumes/navidrome_music_data/cache"
