@@ -26,6 +26,16 @@
       gs = "git status --short";
       lg = "lazygit";
     };
+
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    historySubstringSearch.enable = true;
+    
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "rust" ];
+    };
+    
   };
 
   programs.starship = {
