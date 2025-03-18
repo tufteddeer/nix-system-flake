@@ -20,6 +20,23 @@
       ];
     in
     {
+    
+      homeConfigurations."f" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+        config = { allowUnfree = true; };
+        };
+    
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [
+            ./home-macos.nix
+            ./home-common.nix
+            ];
+    
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
       nixosConfigurations = {
         normandy = lib.nixosSystem {
 
