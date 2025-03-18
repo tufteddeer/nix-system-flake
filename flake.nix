@@ -75,7 +75,7 @@
 
         };
 
-        stardust = lib.nixosSystem {
+        stardust = lib.nixosSystem rec {
           pkgs = import nixpkgs {
             system = "x86_64-linux";
             config = { allowUnfree = true; };
