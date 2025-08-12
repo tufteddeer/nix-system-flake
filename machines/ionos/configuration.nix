@@ -5,13 +5,14 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
 
-  boot.loader.grub.enable = true;
-
-system.stateVersion = "25.11"; # Did you read the comment?
+  boot.loader.grub = {
+      device = [ "/dev/vda2"];
+      # efi values are taken from https://github.com/nix-community/nixos-anywhere-examples/blob/main/configuration.nix
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+    };
+  
+    system.stateVersion = "25.11"; # Did you read the comment?
  
  }
