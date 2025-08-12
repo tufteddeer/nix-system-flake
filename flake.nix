@@ -273,6 +273,8 @@
             ./nix-options.nix
             ./user.nix
             ./locale.nix
+            
+            ./services/plausible.nix
 
              {
               networking.hostName = "ionos";
