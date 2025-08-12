@@ -7,7 +7,7 @@
 {
 
   boot.loader.grub = {
-      device = [ "/dev/vda2"];
+      device = "/dev/vda";
       # efi values are taken from https://github.com/nix-community/nixos-anywhere-examples/blob/main/configuration.nix
       efiSupport = true;
       efiInstallAsRemovable = true;
